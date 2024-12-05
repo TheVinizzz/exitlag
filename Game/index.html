@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | ExitLagRunner</title>
-    <link rel="shortcut icon" href="Game/TemplateData/favicon.ico">
-    <link rel="stylesheet" href="Game/TemplateData/style.css">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -57,11 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/xxxxx.loader.js";
+      var loaderUrl = buildUrl + "/aaaa.loader.js";
       var config = {
-        dataUrl: buildUrl + "/xxxxx.data",
-        frameworkUrl: buildUrl + "/xxxxx.framework.js",
-        codeUrl: buildUrl + "/xxxxx.wasm",
+        dataUrl: buildUrl + "/aaaa.data",
+        frameworkUrl: buildUrl + "/aaaa.framework.js",
+        codeUrl: buildUrl + "/aaaa.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "ExitLagRunner",
@@ -94,8 +94,8 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vh";
       }
 
       loadingBar.style.display = "block";
