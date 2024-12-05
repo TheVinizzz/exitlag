@@ -93,10 +93,6 @@ app.put('/players/:id/score', async (req, res) => {
   const { id } = req.params;
   const { score } = req.body;
   try {
-    
-    if (!currentPlayer) {
-      return res.status(404).json({ error: "Jogador não encontrado" });
-    }
 
     // Atualizar somando ao score atual
     const player = await prisma.player.update({
