@@ -93,12 +93,16 @@ app.put('/players/:id/score', async (req, res) => {
   const { id } = req.params;
   const { score } = req.body;
   try {
+    // Primeiro buscar o jogador atual
+    const currentPlayer = await prisma.player.findUnique({
+      where: { id: parseInt(id) }
+    });
 
     // Atualizar somando ao score atual
     const player = await prisma.player.update({
       where: { id: parseInt(id) },
       data: { 
-        score: score 
+        score: currentPlayer.score > score ? currentPlayer.score : score
       }
     });
     
