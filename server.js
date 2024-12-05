@@ -93,11 +93,7 @@ app.put('/players/:id/score', async (req, res) => {
   const { id } = req.params;
   const { score } = req.body;
   try {
-    // Primeiro buscar o jogador atual
-    const currentPlayer = await prisma.player.findUnique({
-      where: { id: parseInt(id) }
-    });
-
+    
     if (!currentPlayer) {
       return res.status(404).json({ error: "Jogador não encontrado" });
     }
@@ -106,7 +102,7 @@ app.put('/players/:id/score', async (req, res) => {
     const player = await prisma.player.update({
       where: { id: parseInt(id) },
       data: { 
-        score: currentPlayer.score + score 
+        score: score 
       }
     });
     
