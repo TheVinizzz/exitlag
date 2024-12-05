@@ -11,10 +11,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Middleware para servir arquivos estáticos
+app.use('/Game', express.static(path.join(__dirname, '')));
+app.use('/Build', express.static(path.join(__dirname, 'Game/Build')));
+
 // Rota para servir o arquivo HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'test.html'));
+  //res.sendFile(path.join(__dirname, 'test.html'));
+  res.sendFile(path.join(__dirname, 'Game/index.html'));
 });
+
+app.get('/exitlag/game', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Game/index.html'));
+  });
 
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
