@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket.IO Test</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="ranking"></div>
+
+    <script>
+        const socket = io('http://localhost:3000');
+
+        socket.on('connect', () => {
+            console.log('Conectado ao servidor:', socket.id);
+        });
+
+        socket.on('ranking', (data) => {
+            console.log('Ranking inicial:', data);
+            displayRanking(data);
+        });
+
+        socket.on('rankingUpdate', (data) => {
+            console.log('Ranking atualizado:', data);
+            displayRanking(data);
+        });
+
+        function displayRanking(data) {
+            const rankingDiv = document.getElementById('ranking');
+            rankingDiv.innerHTML = '<h2>Ranking:</h2>' + 
+                data.map(player => 
+                    `<p>${player.name}: ${player.score} pontos</p>`
+                ).join('');
+        }
+    </script>
+</body>
+</html> 
